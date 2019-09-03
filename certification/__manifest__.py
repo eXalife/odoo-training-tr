@@ -15,9 +15,10 @@
              'views/certification_template_pdf.xml',
              'views/report_certification_pdf.xml',
              'views/res_partner.xml',
-             'views/standard_view.xml'
+             'views/standard_view.xml',
+             'reports/certification_report.xml'
              ],
     'demo': ['data/certification_data.xml'],
     'development_status': 'Beta',
-    'maintainers': ['ceeficent']
+    'maintainers': ['cee']
 }
