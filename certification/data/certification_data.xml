@@ -13,7 +13,7 @@
         <field name="is_certification_body">False</field>
     </record>
     <record id="standard_demo"
-            model="standard">
+            model="certification.standard">
         <field name="name">Standard Demo</field>
     </record>
 
