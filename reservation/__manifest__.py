@@ -10,7 +10,8 @@
     'license': 'AGPL-3',
     'depends': ['base','hr'],
     'data': [
-             'security/ir.model.access.csv'
+             'security/ir.model.access.csv',
+             'views/activity_view.xml'
              ],
     'demo': [],
     'development_status': 'Alpha',
