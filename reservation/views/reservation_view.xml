@@ -4,12 +4,21 @@
     <record id="view_reservation_calendar" model="ir.ui.view">
         <field name="name">reservation.calendar</field>
         <field name="model">reservation</field>
-        <field name="context">{'status':'validate'}</field>
         <field name="arch" type="xml">
             <calendar color="id" date_start="start_date" date_stop="finish_date" mode="day" string="Reservation List">
                 <field name="activity_place_id"/>
                 <field name="employee_id"/>
             </calendar>
+        </field>
+    </record>
+
+    <record id="view_reservation_search" model="ir.ui.view">
+        <field name="name">reservation.search</field>
+        <field name="model">reservation</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Validated" name="validated" domain="[('state','=','validate')]"/>
+            </search>
         </field>
     </record>
 
@@ -23,6 +32,7 @@
         <field name="name">reservation.calendar</field>
         <field name="res_model">reservation</field>
         <field name="view_mode">calendar</field>
+        <field name="context">{'search_default_validated':1}</field>
     </record>
 
     <menuitem
