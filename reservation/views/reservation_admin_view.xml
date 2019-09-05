@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_reservation_admin_tree" model="ir.ui.view">
+        <field name="name">Reservations</field>
+        <field name="model">reservation</field>
+        <field name="arch" type="xml">
+            <tree string="Reservations" decoration-danger="state is False" decoration-success="state == True">
+                <field name="activity_place_id"/>
+                <field name="employee_id"/>
+                <field name="start_date"/>
+                <field name="finish_date"/>
+                <field name="description"/>
+                <button string="Approve" name="action_approve" type="object" icon="fa-check text-success"
+                        states="False"/>
+                <button string="Refuse" name="action_refuse" type="object" icon="fa-ban text-danger"
+                        states="True"/>
+            </tree>
+        </field>
+    </record>
+    <record id="open_reservation_manager" model="ir.actions.act_window">
+        <field name="name">Reservations Manager</field>
+        <field name="res_model">reservation</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+
+
+    <menuitem id="reservation_manager_menu_item"
+              parent="reservation_root_menu_item"
+              name="Reservation Manager"
+              sequence="6"
+              groups="reservation.reservation_manager_group"
+              action="open_reservation_manager"/>
+</odoo>
