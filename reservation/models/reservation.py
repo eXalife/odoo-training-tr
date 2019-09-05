@@ -20,6 +20,7 @@ class Reservation(models.Model):
                 raise ValidationError('reserva no disponible')
 
 
+
     # @api.model
     # def create(self, vals):
     #     if vals.get('name', _('New')) == _('New'):
