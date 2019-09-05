@@ -5,16 +5,15 @@
         <field name="name">Reservations</field>
         <field name="model">reservation</field>
         <field name="arch" type="xml">
-            <tree string="Reservations" decoration-danger="state is False" decoration-success="state == True">
+            <tree string="Reservations" decoration-danger="state == 'refuse'" decoration-success="state == 'validate'">
                 <field name="activity_place_id"/>
                 <field name="employee_id"/>
                 <field name="start_date"/>
                 <field name="finish_date"/>
                 <field name="description"/>
-                <button string="Approve" name="action_approve" type="object" icon="fa-check text-success"
-                        states="False"/>
-                <button string="Refuse" name="action_refuse" type="object" icon="fa-ban text-danger"
-                        states="True"/>
+                <field name="state"/>
+                <button string="Approve" name="action_approve" type="object" icon="fa-check text-success" states="confirm,validate1,refuse"/>
+                <button string="Refuse" name="action_cancel" type="object" icon="fa-ban text-danger" states="confirm,validate,validate1"/>
             </tree>
         </field>
     </record>

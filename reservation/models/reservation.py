@@ -10,12 +10,17 @@ class Reservation(models.Model):
     employee_id = fields.Many2one('hr.employee', required=True)
     start_date = fields.Datetime(string='Start Date', required=True) # deneme
     finish_date = fields.Datetime(string='Finish Date', required=True)
-    state = fields.Boolean(string = 'Active', default=False)
+    #state = fields.Boolean(string = 'Active', default=False)
+    state = fields.Selection([
+        ('confirm', 'To Approve'),
+        ('refuse', 'Refused'),
+        ('validate', 'Approved')
+    ], string='Status', readonly=True, track_visibility='onchange', copy=False, default='confirm')
     description = fields.Char(string='Description', default='---')
 
     @api.constrains('activity_place_id','start_date','finish_date')
     def _check_date(self):
-        reservations = self.env['reservation'].search([('activity_place_id', '=', self.activity_place_id.id), ('active', '=', True)])
+        reservations = self.env['reservation'].search([('activity_place_id', '=', self.activity_place_id.id), ('state', '=', "To Approve")])
         for reservation in reservations:
             if (reservation.start_date <= self.start_date and reservation.finish_date >= self.start_date) or (reservation.start_date <= self.finish_date and reservation.finish_date >= self.finish_date):
                 raise ValidationError('reserva no disponible')
@@ -23,12 +28,12 @@ class Reservation(models.Model):
     @api.multi
     def action_approve(self):
         for i in self:
-            i.write({'state': True})
+            i.write({'state': "validate"})
 
     @api.multi
     def action_cancel(self):
         for i in self:
-            i.write({'state': False})
+            i.write({'state': "refuse"})
     # @api.model
     # def create(self, vals):
     #     if vals.get('name', _('New')) == _('New'):

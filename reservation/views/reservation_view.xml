@@ -4,6 +4,7 @@
     <record id="view_reservation_calendar" model="ir.ui.view">
         <field name="name">reservation.calendar</field>
         <field name="model">reservation</field>
+        <field name="context">{'status':'validate'}</field>
         <field name="arch" type="xml">
             <calendar color="id" date_start="start_date" date_stop="finish_date" mode="day" string="Reservation List">
                 <field name="activity_place_id"/>
