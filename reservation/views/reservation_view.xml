@@ -28,19 +28,19 @@
             id="reservation_root_menu_item"
             name="Reservations"
             parent=""
-            sequence="5" />
+            sequence="5"/>
 
     <menuitem
             id="reservation_creation_submenu"
             name="Create Reservation"
             parent="reservation_root_menu_item"
-            sequence="5"
+            sequence="3"
             action="open_reservation"/>
 
     <menuitem
             id="reservation_calendar_submenu"
             parent="reservation_root_menu_item"
-            sequence="5"
+            sequence="4"
             name="Reservation Calendar"
             action="open_reservation_calendar"/>
 </odoo>

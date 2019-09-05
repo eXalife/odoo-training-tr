@@ -19,8 +19,9 @@
     </record>
 
     <menuitem
-            id="Activity Places"
-            parent=""
-            sequence="6"
+            id="activity_places_menu_item"
+            parent="reservation_root_menu_item"
+            name="Activity Places"
+            sequence="2"
             action="open_activity_place"/>
 </odoo>
