@@ -22,7 +22,7 @@ class Reservation(models.Model):
     def _check_date(self):
         reservations = self.env['reservation'].search([('activity_place_id', '=', self.activity_place_id.id), ('state', '=', "To Approve")])
         for reservation in reservations:
-            if (reservation.start_date <= self.start_date and reservation.finish_date >= self.start_date) or (reservation.start_date <= self.finish_date and reservation.finish_date >= self.finish_date):
+            if (reservation.start_date <= self.start_date and reservation.finish_date >= self.start_date) or (reservation.start_date <= self.finish_date and reservation.finish_date >= self.finish_date) or (reservation.start_date <= self.start_date and reservation.finish_date >= self.finish_date) :
                 raise ValidationError('reserva no disponible')
 
     @api.multi

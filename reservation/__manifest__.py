@@ -18,6 +18,7 @@
         'views/reservation_admin_view.xml'
              ],
     'demo': [],
+    'application': True,
     'development_status': 'Alpha',
     'maintainers': ['cee']
 }
