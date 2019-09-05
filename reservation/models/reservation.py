@@ -11,11 +11,13 @@ class Reservation(models.Model):
     start_date = fields.Datetime(string='Start Date', required=True) # deneme
     finish_date = fields.Datetime(string='Finish Date', required=True)
     active = fields.Boolean(string = 'Active', default=True)
-    #
-    # @api.constrains('activity_place_id','start_date','finish_date')
-    # def _check_date(self):
-    #     reservation = self.search([('|','&'('start_date', '<' , self.start_date),('finish_date', '>', self.finish_date)) ])
-    #         raise ValidationError('It is not a certification entity')
+
+    @api.constrains('activity_place_id','start_date','finish_date')
+    def _check_date(self):
+        reservations = self.env['reservation'].search([('activity_place_id', '=', self.activity_place_id.id), ('active', '=', True)])
+        for reservation in reservations:
+            if (reservation.start_date < self.start_date and reservation.finish_date > self.start_date) or (reservation.start_date < self.finish_date and reservation.finish_date > self.finish_date):
+                raise ValidationError('reserva no disponible')
 
 
     # @api.model
