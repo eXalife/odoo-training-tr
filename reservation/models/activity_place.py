@@ -6,4 +6,4 @@ class ActivityPlace(models.Model):
     _description = 'Activity Place'
 
     place = fields.Char(string='Place')
-    activity = fields.One2many(related='activity')
+    activity_id = fields.Many2one('activity')
