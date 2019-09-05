@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_reservation_activity,reservation.activity,model_activity,base.group_user,1,1,1,1
 access_reservation_activity_place,reservation.activity.place,model_activity_place,base.group_user,1,1,1,1
+access_reservation,reservation.reservation,model_reservation,base.group_user,1,1,1,1

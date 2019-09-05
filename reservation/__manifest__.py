@@ -12,7 +12,8 @@
     'data': [
              'security/ir.model.access.csv',
              'views/activity_view.xml',
-             'views/activity_place_view.xml'
+             'views/activity_place_view.xml',
+             'views/reservation_view.xml'
              ],
     'demo': [],
     'development_status': 'Alpha',

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_reservation_calendar" model="ir.ui.view">
+        <field name="name">reservation.calendar</field>
+        <field name="model">reservation</field>
+        <field name="arch" type="xml">
+            <calendar color="id" date_start="start_date" date_stop="finish_date" mode="day" string="Reservation List">
+                <field name="activity_place_id"/>
+                <field name="employee_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="open_reservation" model="ir.actions.act_window">
+        <field name="name">reservation.action</field>
+        <field name="res_model">reservation</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record id="open_reservation_calendar" model="ir.actions.act_window">
+        <field name="name">reservation.calendar</field>
+        <field name="res_model">reservation</field>
+        <field name="view_mode">calendar</field>
+    </record>
+
+    <menuitem
+            id="reservation_root_menu_item"
+            name="Reservations"
+            parent=""
+            sequence="5" />
+
+    <menuitem
+            id="reservation_creation_submenu"
+            name="Create Reservation"
+            parent="reservation_root_menu_item"
+            sequence="5"
+            action="open_reservation"/>
+
+    <menuitem
+            id="reservation_calendar_submenu"
+            parent="reservation_root_menu_item"
+            sequence="5"
+            name="Reservation Calendar"
+            action="open_reservation_calendar"/>
+</odoo>
